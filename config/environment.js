@@ -43,5 +43,16 @@ module.exports = function(environment) {
 
   }
 
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self' 'unsafe-eval' http://example.com:35729 https://connect.facebook.net http://connect.facebook.net https://graph.facebook.com",
+    'font-src': "'self'",
+    'connect-src': "'self' ws://example.com:35729",
+    'img-src': "'self'",
+    'style-src': "'self' 'unsafe-inline'",
+    'media-src': "'self'",
+    'frame-src': "http://static.ak.facebook.com https://s-static.ak.facebook.com https://www.facebook.com http://www.facebook.com"
+  }
+
   return ENV;
 };

@@ -1,0 +1,9 @@
+<ul>
+  {{#each place in model.places}}
+    <li>{{place.place.name}}</li>
+  {{/each}}
+</ul>
+
+{{#if model.hasNext}}
+  <button {{action 'loadMore'}}>More places</button>
+{{/if}}
