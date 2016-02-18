@@ -1,12 +1,12 @@
 import Ember from 'ember';
-import FbCheckLogin from 'i-have-been-to/mixins/routes/fb-check-login';
+import FBLoginStatus from 'i-have-been-to/mixins/routes/fb-login-status';
 
-export default Ember.Route.extend(FbCheckLogin, {
-  setupController: function(controller, model) {
-    var route = this;
-    this._super(controller, model);
-    window.checkLoginState = function() {
-      route.checkLoginStatus();
+export default Ember.Route.extend(FBLoginStatus, {
+  fb: Ember.inject.service(),
+
+  beforeModel() {
+    window.checkLoginState = () => {
+      this.checkLoginStatus();
     };
   }
 });

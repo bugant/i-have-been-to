@@ -1,8 +1,17 @@
 import Ember from 'ember';
-import FbCheckLogin from 'i-have-been-to/mixins/routes/fb-check-login';
 
-export default Ember.Route.extend(FbCheckLogin, {
-  beforeModel: function() {
-    return this.checkLoginStatus();
+export default Ember.Route.extend({
+  fb: Ember.inject.service(),
+
+  beforeModel() {
+    return this.get('fb').getLoginStatus().then((response) => {
+      if (response.status === 'connected') {
+        let fbToken = response.authResponse.accessToken;
+        this.get('fb').setAccessToken(fbToken);
+        localStorage.setItem('fbToken', fbToken);
+      } else {
+        this.transitionTo('fb-login');
+      }
+    });
   }
 });

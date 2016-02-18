@@ -1,8 +1,23 @@
-<ul>
-  {{#each place in model.places}}
-    <li>{{place.place.name}}</li>
+<div class="row">
+  {{#each model.places as |place|}}
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">{{place.place.name}}</h4>
+          <div class="card-text">{{place.created_time}}</div>
+        </div>
+        <div class="card-block">
+          <p class="card-text">
+            {{#if place.place.location.street}}
+              {{place.place.location.street}},
+            {{/if}}
+            {{place.place.location.city}} {{place.place.location.country}}
+          </p>
+        </div>
+      </div>
+    </div>
   {{/each}}
-</ul>
+</div>
 
 {{#if model.hasNext}}
   <button {{action 'loadMore'}}>More places</button>
