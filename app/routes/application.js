@@ -8,7 +8,7 @@ export default Ember.Route.extend({
       if (response.status === 'connected') {
         let fbToken = response.authResponse.accessToken;
         this.get('fb').setAccessToken(fbToken);
-        localStorage.setItem('fbToken', fbToken);
+        this.transitionTo('home');
       } else {
         this.transitionTo('fb-login');
       }

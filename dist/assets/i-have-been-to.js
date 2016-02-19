@@ -112,7 +112,6 @@ define('i-have-been-to/mixins/routes/fb-login-status', ['exports', 'ember'], fun
 
       return this.get('fb').getLoginStatus().then(function (response) {
         if (response.status === 'connected') {
-          localStorage.setItem('fbToken', response.authResponse.accessToken);
           _this.transitionTo('home');
         } else {
           _this.transitionTo('fb-login');
@@ -147,7 +146,7 @@ define('i-have-been-to/routes/application', ['exports', 'ember'], function (expo
         if (response.status === 'connected') {
           var fbToken = response.authResponse.accessToken;
           _this.get('fb').setAccessToken(fbToken);
-          localStorage.setItem('fbToken', fbToken);
+          _this.transitionTo('home');
         } else {
           _this.transitionTo('fb-login');
         }
@@ -578,7 +577,7 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("i-have-been-to/app")["default"].create({"name":"i-have-been-to","version":"0.0.0+bf6f3026"});
+  require("i-have-been-to/app")["default"].create({"name":"i-have-been-to","version":"0.0.0+27dd024f"});
 }
 
 /* jshint ignore:end */

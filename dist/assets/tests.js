@@ -209,22 +209,6 @@ define('i-have-been-to/tests/unit/mixins/push-places-test', ['exports', 'ember',
     var subject = PushPlacesObject.create();
     assert.ok(subject);
   });
-
-  tests('pushPlaces', function (assert) {
-    assert.expect(1);
-
-    var PushPlacesObject = _ember['default'].Object.extend(_iHaveBeenToMixinsPushPlaces['default'], {
-      fb: {
-        api: function api(path) {
-          assert.ok(path.match('/me/tagged_places'), 'get places from Facebook');
-          return _ember['default'].RSVP.resolve(['foo']);
-        }
-      }
-    });
-
-    var subject = PushPlacesObject.create();
-    subject.pushPlaces(_ember['default'].Object.create());
-  });
 });
 define('i-have-been-to/tests/unit/mixins/push-places-test.jshint', ['exports'], function (exports) {
   'use strict';
@@ -232,16 +216,16 @@ define('i-have-been-to/tests/unit/mixins/push-places-test.jshint', ['exports'], 
   QUnit.module('JSHint - unit/mixins');
   QUnit.test('unit/mixins/push-places-test.js should pass jshint', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'unit/mixins/push-places-test.js should pass jshint.\nunit/mixins/push-places-test.js: line 28, col 3, Missing semicolon.\nunit/mixins/push-places-test.js: line 13, col 1, \'tests\' is not defined.\n\n2 errors');
+    assert.ok(true, 'unit/mixins/push-places-test.js should pass jshint.');
   });
 });
-define('i-have-been-to/tests/unit/mixins/routes/fb-login-status-test', ['exports', 'ember', 'i-have-been-to/tests/mixins/routes/fb-login-status', 'qunit'], function (exports, _ember, _iHaveBeenToTestsMixinsRoutesFbLoginStatus, _qunit) {
+define('i-have-been-to/tests/unit/mixins/routes/fb-login-status-test', ['exports', 'ember', 'i-have-been-to/mixins/routes/fb-login-status', 'qunit'], function (exports, _ember, _iHaveBeenToMixinsRoutesFbLoginStatus, _qunit) {
 
   (0, _qunit.module)('Unit | Mixin | routes/fb login status');
 
   // Replace this with your real tests.
   (0, _qunit.test)('it works', function (assert) {
-    var RoutesFbLoginStatusObject = _ember['default'].Object.extend(_iHaveBeenToTestsMixinsRoutesFbLoginStatus['default']);
+    var RoutesFbLoginStatusObject = _ember['default'].Object.extend(_iHaveBeenToMixinsRoutesFbLoginStatus['default']);
     var subject = RoutesFbLoginStatusObject.create();
     assert.ok(subject);
   });
